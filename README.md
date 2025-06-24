@@ -33,7 +33,8 @@
 
 - **Database**: MySQL with Knex.js for query building
 
-![DrawSQL Diragram](../sitecheck-app/src/assets/images/drawSQL.png)
+![DrawSQL Diragram](./src/assets/images/drawSQL.png)
+![DrawSQL Diragram](drawSQL.png)
 
 - **Hosting**:
 
@@ -68,7 +69,7 @@
 
 ### Mockups
 
-![Mockups](../sitecheck-app/src/assets/images/mockup.png)
+![Mockups](mockup.png)
 
 ### Data
 
