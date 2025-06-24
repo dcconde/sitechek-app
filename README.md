@@ -33,7 +33,6 @@
 
 - **Database**: MySQL with Knex.js for query building
 
-![DrawSQL Diragram](./src/assets/images/drawSQL.png)
 ![DrawSQL Diragram](drawSQL.png)
 
 - **Hosting**:
