@@ -1,5 +1,5 @@
-@use "../src/styles/partials/fonts" as *;
-@use "../src/styles/partials/variables" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
 
 ul {
   margin: 0;
@@ -85,6 +85,7 @@ body {
     font-size: 14px;
     font-weight: 600;
     color: $dark-gray;
+    text-align: left;
   }
 
   &__input {

@@ -2,11 +2,11 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import axios from "axios";
-import siteCheckLogo from "../assets/images/site-cjeck-logo.svg";
+import siteCheckLogo from "../../assets/images/site-check-logo.svg";
 import "./LoginPage.scss";
 
 function LoginPage() {
-  const { setUser, setLoggedIn } = useContext(UserContext);
+  const { user, setUser, loggedIn, setLoggedIn } = useContext(UserContext);
   const [activeRole, setActiveRole] = useState("employee");
   const [error, setError] = useState("");
   const navigate = useNavigate();
