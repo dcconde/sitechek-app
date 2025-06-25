@@ -1,0 +1,148 @@
+@use "../src/styles/partials/fonts" as *;
+@use "../src/styles/partials/variables" as *;
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  font-family: "Titillium Web", monospace;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  height: 60px;
+  width: auto;
+}
+
+.login {
+  &__page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem auto;
+  }
+
+  &__title {
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  &__sub-title {
+    margin: 0;
+    text-align: center;
+    font-weight: 300;
+    color: $medium-gray;
+  }
+
+  &__footer {
+    width: 100%;
+    background-color: $light-gray;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: $medium-gray;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    border-radius: 0.5rem;
+    border: solid;
+    color: $light-gray;
+    padding: 2rem;
+  }
+
+  &__title {
+    margin: 0;
+    text-align: left;
+    font-size: 30px;
+    color: $dark-gray;
+
+    &-container {
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__sub-title {
+    margin: 0;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: $medium-gray;
+  }
+
+  &__label {
+    font-size: 14px;
+    font-weight: 600;
+    color: $dark-gray;
+  }
+
+  &__input {
+    width: 295px;
+    height: 2.5rem;
+    border: solid;
+    color: $light-gray;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+  }
+
+  &__btn {
+    color: $dark-gray;
+    font-weight: 600;
+    width: 295px;
+    height: 2.5rem;
+    background-color: $yellow;
+    border-radius: 0.5rem;
+    border: none;
+    margin: 0.5rem 0;
+  }
+}
+
+.role-toggle {
+  display: flex;
+  background-color: #f1f5f9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 0.5rem;
+  width: 371px;
+  margin: auto;
+
+  &__btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #e2e8f0;
+    }
+
+    &.active {
+      border-radius: 0.5rem;
+      background-color: #ffffff;
+      color: #000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.message {
+  font-weight: 400;
+  font-size: 1rem;
+  color: $medium-gray;
+  margin: 0;
+}
