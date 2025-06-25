@@ -1,19 +1,15 @@
-import { useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 import axios from "axios";
 import siteCheckLogo from "../assets/images/site-cjeck-logo.svg";
 
-function Index() {
-  const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [error, setError] = useState("");
+function LoginPage() {
+  const { setUser, setLoggedIn } = useContext(UserContext);
   const [activeRole, setActiveRole] = useState("employee");
-
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  /*
-   * Login with username and password, creates JWT token saved in localStorage to persist login
-   */
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -24,41 +20,40 @@ function Index() {
         role: activeRole,
       });
 
-      localStorage.setItem("token", response.data.token); // save token in localStorage
-
-      console.log("token", response.data.token);
+      localStorage.setItem("token", response.data.token);
 
       if (response.data.token) {
-        // get user data using token
         const userResponse = await axios.get("http://localhost:8080/user", {
           headers: {
             Authorization: `Bearer ${response.data.token}`,
           },
         });
 
+        if (userData.role !== activeRole) {
+          setError(
+            `Access denied: your account is not authorized as a ${activeRole}. Please select the correct role with the toggle button.`
+          );
+          localStorage.removeItem("token");
+          return;
+        }
+
+        setUser(userResponse.data.user); // saves decoded user data in state
         setLoggedIn(true);
-        setUser(userResponse.data.user); // save decoded user data in state
         setError("");
-        navigate("/home");
+
+        if (activeRole === "employee") {
+          navigate("/employee/dashboard");
+        } else {
+          navigate("/employer/dashboard");
+        }
       }
     } catch (err) {
-      console.error(err);
-      setError("error logging in");
+      setError("Login failed.");
     }
   };
 
-  /*
-   * Logout of application, clears localStorage JWT token and set state to logged out
-   */
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-    setUser({});
-    navigate("/");
-  };
-
   return (
-    <div className="index">
+    <div className="login__page">
       {!loggedIn && (
         <div className="login__page-container">
           <div className="login__logo-container">
@@ -133,8 +128,11 @@ function Index() {
           </h3>
         </div>
       )}
+      <div className="login__footer">
+        <p>© 2024 SiteCheck - Powered by StructCode Techologies</p>
+      </div>
     </div>
   );
 }
 
-export default Index;
+export default LoginPage;
